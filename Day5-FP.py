@@ -1,3 +1,4 @@
+# Password Generator
 # ✅ List of lowercase letters
 lowercase_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 
                      'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 
@@ -28,9 +29,10 @@ num_track=0
 password=''
 pass_generator=[numbers_list,symbols_list,uppercase_letters,lowercase_letters]
 total_count=lw_letters_count+up_letters_count+symbols+numbers
-while lw_track<lw_letters_count or up_track<up_letters_count or sy_track<symbols or num_track<numbers:
 
-    select_rnd=random.randint(0,3)
+while lw_track<lw_letters_count or up_track<up_letters_count or sy_track<symbols or num_track<numbers:
+#from here im traing to not use the the random.shuffle fonction and we will insert the leters and symbols...in random order
+    select_rnd=random.randint(0,len(pass_generator)-1)
     if select_rnd==0:
         chosen_letter=lowercase_letters[random.randint(0,len(lowercase_letters)-1)]
 
@@ -43,7 +45,6 @@ while lw_track<lw_letters_count or up_track<up_letters_count or sy_track<symbols
     elif select_rnd==3:
         chosen_letter=numbers_list[random.randint(0, len(numbers_list)-1)]      
 
-    # chosen_letter=random.randint(0,len(pass_generator[0]+pass_generator[1]+pass_generator[2]+pass_generator[3]+pass_generator[4])+1)
     if chosen_letter in lowercase_letters and lw_track<lw_letters_count:
         password=password+ chosen_letter
         lw_track+=1
