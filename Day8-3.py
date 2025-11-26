@@ -12,7 +12,7 @@ for j in range(len(word_to_enc)) :
                 print(f'we got i+encode_by<=26 {origin[i+encode_by]}')
                 encoded_list.append(origin[i+encode_by])
             elif i+encode_by>25:
-                count=24+i-encode_by
+                count=(encode_by+i)%26
                 print(f'-------- i={i} \n count={count} \n  encode_by={encode_by}')
                 encoded_list.append(origin[count])
                 print(f'we got  i+encode_by>26 {origin[count]}')
