@@ -72,23 +72,31 @@ while play_again:
     elif len(dealer_carts)==2 and sum_carts_values(dealer_carts)==21 :
             print(f'black jack dealer win')
             break
-    print(f'user_cart {user_carts}')
-    print(f'your carts are {user_carts} | total : {sum_carts_values(user_carts)} \nDealers cart is {dealer_carts[0]} | total {sum_carts_values(dealer_carts[0])} ')
+    print(f'your carts are {user_carts} | total : {sum_carts_values(user_carts)} \nDealers cart is {[dealer_carts[0]]} | total {sum_carts_values([dealer_carts[0]])} ')
     chois=input('Do you want to get another cart pres (1) or to stop here pres (2) ')
     if chois=='1':
         user_carts.append(get_cart())
         if sum_carts_values(user_carts)>21:
             print(f'you lose \nyour carts are : {user_carts} \nyour total is : {sum_carts_values(user_carts)} ')
+            break
         elif sum_carts_values(user_carts)==21 and sum_carts_values(dealer_carts)==21:
             print(f'equal \nyour carts are : {user_carts} \nyour total is : {sum_carts_values(user_carts)}\ndealer carts are : {dealer_carts} \nhis total is : {sum_carts_values(dealer_carts)}')
+            break
         elif sum_carts_values(user_carts)==21 and sum_carts_values(dealer_carts)!=21:
             print(f'you win \nyour carts are : {user_carts} \nyour total is : {sum_carts_values(user_carts)} ')
+            break
     if chois=='2':
         while sum_carts_values(dealer_carts)<17:
             dealer_carts.append(get_cart())
         if sum_carts_values(dealer_carts)>21:
             print(f'you win \nyour carts are : {user_carts} \nyour total is : {sum_carts_values(user_carts)}\ndealer carts are : {dealer_carts} \nhis total is : {sum_carts_values(dealer_carts)}')
+            break
         elif sum_carts_values(dealer_carts)<sum_carts_values(user_carts):
             print(f'you win \nyour carts are : {user_carts} \nyour total is : {sum_carts_values(user_carts)}\ndealer carts are : {dealer_carts} \nhis total is : {sum_carts_values(dealer_carts)}')
+            break
         elif sum_carts_values(dealer_carts)>sum_carts_values(user_carts):
             print(f'dealer win \nyour carts are : {user_carts} \nyour total is : {sum_carts_values(user_carts)}\ndealer carts are : {dealer_carts} \nhis total is : {sum_carts_values(dealer_carts)}')
+            break
+        elif sum_carts_values(dealer_carts)==21:
+            print(f'dealer win \nyour carts are : {user_carts} \nyour total is : {sum_carts_values(user_carts)}\ndealer carts are : {dealer_carts} \nhis total is : {sum_carts_values(dealer_carts)}')
+            break
