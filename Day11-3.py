@@ -21,7 +21,6 @@ user_carts=[]
 dealer_carts=[]
 def sum_micro(symbol,sum_resolt,aces_count):# rake "10♠" as input
     number_of_cart=symbol[:-1]#get all the elemts expect the last
-    print(f'sum is caled and we have {symbol} and {sum_resolt} and {aces_count} aaaand {number_of_cart}')
     if  number_of_cart=='A' :
         sum_resolt.append(11)
         aces_count+=1
@@ -33,13 +32,11 @@ def sum_micro(symbol,sum_resolt,aces_count):# rake "10♠" as input
         sum_resolt.append(10) 
     elif int(number_of_cart)>=2 and int(number_of_cart)<=10:
         sum_resolt.append(int(number_of_cart))  
-    print(f'sum is finiched and we have {symbol} and {sum_resolt} and {aces_count}')
     return sum_resolt,aces_count
     
 def sum_carts_values(symbol_entred):
     aces_count=0
     sum_resolt=[]
-    print(f'befor the loop {symbol_entred}')
     for symbol in symbol_entred: 
             if symbol[-1]=='♠' :
                 sum_resolt,aces_count=sum_micro(symbol,sum_resolt,aces_count)
@@ -64,10 +61,17 @@ for i in range(2):
     user_carts.append(get_cart())
     dealer_carts.append(get_cart())
 
-
-
 while play_again:
     print('----------------------------------------------------------------')
+    if len(user_carts)==2 and sum_carts_values(user_carts)==21 and len(dealer_carts)==2 and sum_carts_values(dealer_carts)==21:
+        print(f'you bouth got black jack equal')
+        break 
+    elif len(user_carts)==2 and sum_carts_values(user_carts)==21 :
+        print(f'black jack you win')
+        break
+    elif len(dealer_carts)==2 and sum_carts_values(dealer_carts)==21 :
+            print(f'black jack dealer win')
+            break
     print(f'user_cart {user_carts}')
     print(f'your carts are {user_carts} | total : {sum_carts_values(user_carts)} \nDealers cart is {dealer_carts[0]} | total {sum_carts_values(dealer_carts[0])} ')
     chois=input('Do you want to get another cart pres (1) or to stop here pres (2) ')
@@ -88,4 +92,3 @@ while play_again:
             print(f'you win \nyour carts are : {user_carts} \nyour total is : {sum_carts_values(user_carts)}\ndealer carts are : {dealer_carts} \nhis total is : {sum_carts_values(dealer_carts)}')
         elif sum_carts_values(dealer_carts)>sum_carts_values(user_carts):
             print(f'dealer win \nyour carts are : {user_carts} \nyour total is : {sum_carts_values(user_carts)}\ndealer carts are : {dealer_carts} \nhis total is : {sum_carts_values(dealer_carts)}')
-#need the case wher if the user hit a black jack at first
